@@ -1,0 +1,59 @@
+<div class="container main-container">
+<header>
+
+<div class="logo">
+    <img src="../../../assets/img/chat.png" alt="logoChat">
+    <h2 class="nombre-Chat">LiveChat</h2>
+</div>
+
+<div class="btnLogout">
+    <button type="button" (click)="saveUser.logOut()">
+        <div class="svg-wrapper-1">
+          <div class="svg-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+            </svg>
+          </div>
+        </div>
+        <span>LogOut</span>
+      </button>
+</div>
+
+
+
+</header>
+<div class="imagen">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+    class="img-fluid" alt="Sample image">
+</div>
+
+
+<div class="chat-window">
+    <div>
+        <h1>chat Online</h1>
+        <hr>
+    </div>
+    <div class="app-mensajes" id="app-mensajes">
+
+            
+
+        <div  *ngFor="let chat of saveUser.chats" [ngClass]="{'text-aling-right':saveUser.usuario.uid == chat.uid }">
+            <span class="badge badge text-bg-primary" 
+            [ngClass]="{'badge badge text-bg-primary':saveUser.usuario.uid == chat.uid, 'badge badge text-bg-dark': saveUser.usuario.uid != chat.uid }">{{chat.nombre}}</span>
+            <p>
+                {{chat.mensaje}}
+            </p>
+        </div>                    
+
+
+
+
+
+
+    </div>
+
+    <div class="divInput">
+        <input class="form-control" type="mensaje" name="mensaje" placeholder="Enviar Mensaje" [(ngModel)]="mensaje" (keyup.enter)="enviarMensaje()">
+    </div>
+</div>

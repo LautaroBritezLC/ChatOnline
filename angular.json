@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -94,8 +96,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ChatOnline:build:production",
+            "firebaseProject": "chatonline-a149e",
+            "firebaseHostingSite": "chatonline-a149e"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a9da04fc-f3eb-4329-8fce-c5481e9837e7"
   }
 }

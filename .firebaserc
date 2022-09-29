@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "chatonline-a149e"
+  },
+  "targets": {
+    "chatonline-a149e": {
+      "hosting": {
+        "ChatOnline": [
+          "chatonline-a149e"
+        ]
+      }
+    }
+  }
+}

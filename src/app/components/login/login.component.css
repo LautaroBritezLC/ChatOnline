@@ -1,0 +1,62 @@
+.wrapper {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 100%;
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(218, 41%, 35%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(218, 41%, 45%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%);
+    
+}
+.fw-light{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.logo {
+    align-content: center;
+    align-items: center;
+    margin-top: 0px;
+    height: 130px;
+    margin-bottom: 10px;
+}
+
+.bg-glass {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(255, 254, 254, 0.858);
+    transition: all 0.3s ease-in-out;
+}
+
+.bg-glass:hover {
+    box-shadow: 10px 10px 10px  rgba(5, 24, 41, 0.614);
+}
+
+.form-control {
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:hover {
+    box-shadow: 5px 5px 5px  rgba(13, 62, 106, 0.614);
+}
+
+
+.btn-sm {
+    align-items: center;
+    text-align: center;
+}
+
+
+
