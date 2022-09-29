@@ -16,7 +16,8 @@ import { getAuth } from 'firebase/auth';
   providedIn: 'root'
 })
 export class FirebaseCodeErrorService {
-
+  mensaje: string
+  conectados: any = [];
   userDesconectado: {} = {};
   conectado: boolean = false;
   public usuario: any = {};
@@ -87,35 +88,30 @@ export class FirebaseCodeErrorService {
 
     }
   }
-
-  guardarUser(usersDatos: any) {
+  async guardarUser(dataUser: any) {
     const objeUser = {
-      email: usersDatos.email,
-      uid: usersDatos.uid,
+      email: dataUser.email,
+      uid: dataUser.uid,
       conectado: true,
     }
 
-    console.log(objeUser);
+    const saveUser = async (objeUser: any) => {
 
-    const saveUser = (objeUser: any) => {
-      
-
-      this.firestore.collection("user").add(objeUser).
-      then(docRef =>{
-          console.log('agrego', objeUser);
-      })
-      .catch(error => {
-        console.log(error);
-      }
-      );
-      return objeUser;
+      const res = this.firestore.collection('user').doc(objeUser.uid).set(objeUser)
+      .then( ()=>{console.log(res)} )
+      .catch( (err)=>{console.log(err)} )
+      console.log(objeUser.uid)
+      return res;
     }
     saveUser(objeUser);
   }
 
   leerUsuarios(dataUser: any) {
-    const lectura = this.firestore.collection('user').get().toPromise();
+    this.getuid()
 
+    this.dataUser = dataUser;
+    const lectura = this.firestore.collection('user').get().toPromise();
+    console.log(lectura)
     lectura.then((resp) => {
 
       const document = resp?.docs;
@@ -124,7 +120,7 @@ export class FirebaseCodeErrorService {
         const dts:any = objet.data();
         datosUser.email = dts.email;
         datosUser.uid = dts.uid;
-        datosUser.conectado =true;
+        datosUser.conectado = true;
 
         this.listaUsers.push(datosUser);
       }
@@ -132,14 +128,12 @@ export class FirebaseCodeErrorService {
       let existeUsuario = false;
       for(let unUser of this.listaUsers) {
         if(unUser.email == dataUser.email) {
-          console.log(unUser.email +'==' + dataUser.email);
           existeUsuario = true;
           break
         }
       }
       if(existeUsuario == false){
         this.guardarUser(dataUser);
-        console.log('sin coincidencia' + dataUser.email)
       }
 
     }).catch(error => console.log(error));
@@ -148,6 +142,22 @@ export class FirebaseCodeErrorService {
   }
 
   async logOut() {
+    const objeUser = {
+      email: this.dataUser.email,
+      uid: this.dataUser.uid,
+      conectado: false
+    }
+
+    console.log(objeUser, 'objUser');
+    const saveUser = async (objeUser: any) => {
+
+      const res = this.firestore.collection('user').doc(objeUser.uid).set(objeUser)
+      .then( ()=>{console.log(res, 'rp')} )
+      .catch( (err)=>{console.log(err)} )
+      console.log(objeUser.uid)
+      return res;
+    }
+    saveUser(objeUser);
     /*console.log(this.usuario, 'uid user');
     const unsub = getFirestore.collection('user').onSnapshot((query: any) => {
       console.log(query)
@@ -167,7 +177,7 @@ export class FirebaseCodeErrorService {
       }
 
     }*/
-    this.usuario = {};
+    //this.usuario = {};
     this.afAuth.signOut().then(() => this.router.navigate(['/login']));
   }
 
@@ -200,8 +210,12 @@ export class FirebaseCodeErrorService {
 
 
   getuid() {
+    let datosUsuario: any[] = [];
+    
+    const unsub = this.firestore.collection('user');
 
   }
+
 
 
 }

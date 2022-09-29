@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { collection, doc, setDoc , DocumentData} from "firebase/firestore";
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { FormBuilder, FormGroup, Validators , NgModel } from '@angular/forms';
+import { users } from '../user/user';
 
 @Component({
   selector: 'app-dahsboard',
@@ -51,8 +52,11 @@ export class DahsboardComponent implements OnInit {
           await setDoc(doc(this.firestore, 'user', this.dataUser.user.uid))
         }*/
         this.dataUser = user;
+        this.saveUser.guardarUser(this.dataUser);
         this.saveUser.leerUsuarios(this.dataUser);
-        //this.saveUser.guardarUser(this.dataUser);
+        this.saveUser.listaUsers
+        console.log(this.saveUser.listaUsers, 'user');
+
 
 
        // console.log(this.saveUser.listaUsers);

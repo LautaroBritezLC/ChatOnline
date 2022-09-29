@@ -40,9 +40,9 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule, // animaciones angular
-    ToastrModule.forRoot(), provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()),
+    ToastrModule.forRoot(), provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()),
     FormsModule,
     CommonModule,
   ],

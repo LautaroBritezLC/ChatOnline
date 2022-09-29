@@ -1,5 +1,6 @@
 export const environment = {
-  firebase: {
+  production: true,
+  firebaseConfig: {
     projectId: 'chatonline-a149e',
     appId: '1:438864755416:web:8198dcc125301cf659f5ad',
     databaseURL: 'https://chatonline-a149e-default-rtdb.firebaseio.com',
@@ -9,6 +10,6 @@ export const environment = {
     authDomain: 'chatonline-a149e.firebaseapp.com',
     messagingSenderId: '438864755416',
     measurementId: 'G-9JCMTH442P',
-  },
-  production: true
+  }
+  
 };

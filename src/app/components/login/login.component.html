@@ -1,66 +1,79 @@
-  
 <div class="wrapper">
-    <div class="col-md-9 col-lg-5 col-xl-6 mb-5 d-xs-none d-md-block d-lg-block d-xl-block d-xxl-block d-sm-none d-none">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-        class="img-fluid" alt="Sample image">
+    <div
+        class="col-md-9 col-lg-5 col-xl-6 mb-5 d-xs-none d-md-block d-lg-block d-xl-block d-xxl-block d-sm-none d-none">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid"
+            alt="Sample image">
     </div>
 
-    <div class="card bg-glass"> 
-            <div *ngIf = "!loading" class="card-body px-md-7 py-7 px-md-7" >
-                <img  class = "logo" src="../../../assets/img/login.png" alt="login">
-                <h2 class="fw-light">login</h2>
+    <div class="card bg-glass">
+        <div *ngIf="!loading" class="card-body px-md-7 py-7 px-md-7">
+            <img class="logo" src="../../../assets/img/login.png" alt="login">
+            <h2 class="fw-light">login</h2>
 
-                <form (ngSubmit)="login()" [formGroup]="loginUsuario">
+            <form (ngSubmit)="login()" [formGroup]="loginUsuario">
 
-                    <div class="form-floating mb-2">
-                        <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
-                        <label >Email</label>
-                        <span *ngIf="loginUsuario.get('email')?.hasError('required') &&  loginUsuario.get('email')?.touched" class="text-danger" >
-                            (El <strong>correo</strong> es requerido)
-                        </span>
+                <div class="form-floating mb-2">
+                    <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
+                    <label>Email</label>
+                    <span *ngIf="loginUsuario.get('email')?.hasError('required') &&  loginUsuario.get('email')?.touched"
+                        class="text-danger">
+                        (El <strong>correo</strong> es requerido)
+                    </span>
 
-                        <span *ngIf="loginUsuario.get('email')?.hasError('email') &&  loginUsuario.get('email')?.touched" class="text-danger" >
-                            (El <strong>correo</strong> es invalido)
-                        </span>
+                    <span *ngIf="loginUsuario.get('email')?.hasError('email') &&  loginUsuario.get('email')?.touched"
+                        class="text-danger">
+                        (El <strong>correo</strong> es invalido)
+                    </span>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    <label>Password</label>
+                    <span
+                        *ngIf="loginUsuario.get('password')?.hasError('required') &&  loginUsuario.get('password')?.touched"
+                        class="text-danger">
+                        (La <strong>password</strong> es requerida)
+                    </span>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="ingresaButton" [disabled]="loginUsuario.invalid">
+
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path
+                                d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span>Ingresar</span>
+
+                    </button>
+
+                </div>
+
+                <div class="text-center">
+
+                    <div class="btn btn-sm mt-2">
+                        <button type="button" class="btn btn-danger btn-lg" (click)="loginGoogle()">Google</button>
                     </div>
 
-                    <div class="form-floating mb-2">
-                        <input type="password" formControlName="password" class="form-control"  placeholder="Password">
-                        <label >Password</label>
-                        <span *ngIf="loginUsuario.get('password')?.hasError('required') &&  loginUsuario.get('password')?.touched" class="text-danger" >
-                            (La <strong>password</strong> es requerida)
-                        </span>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button  type="submit" class="btn btn-outline-secondary btn-lg" [disabled]="loginUsuario.invalid">Ingresar</button>         
+                    <div class="btn btn-sm mt-2">
+                        <button type="button" class="btn btn-dark btn-lg" (click)="loginGitHub()">GitHub</button>
                     </div>
 
-                    <div class="text-center">
-                    
-                        <div class="btn btn-sm mt-2">
-                            <button  type="button" class="btn btn-danger btn-lg" (click)="loginGoogle()">Google</button>         
-                        </div>
-
-                        <div class="btn btn-sm mt-2">
-                            <button  type="button" class="btn btn-dark btn-lg" (click)="loginGitHub()">GitHub</button>         
-                        </div>
-
-                        <div class="btn btn-sm mt-2">
-                            <button  type="button" class="btn btn-info btn-lg" (click)="loginYahoo()">Yahoo</button>         
-                        </div>
-
-                        <div class="btn btn-sm mt-0">
-                            <button  type="button" class="btn btn-primary btn-lg" (click)="loginFacebook()">Facebook</button>         
-                        </div>
-
-                        <p class="mb-0">No tienes cuenta? <a routerLink="/registrar-usuario">Registrar</a> </p>
-                        <a class="mb-10" routerLink="/recuperar-pass-word">recuperar contraseña</a>
+                    <div class="btn btn-sm mt-2">
+                        <button type="button" class="btn btn-info btn-lg" (click)="loginYahoo()">Yahoo</button>
                     </div>
-                </form>
 
-            </div>
-            <app-spinner *ngIf = "loading"></app-spinner>
+                    <div class="btn btn-sm mt-0">
+                        <button type="button" class="btn btn-primary btn-lg" (click)="loginFacebook()">Facebook</button>
+                    </div>
+
+                    <p class="mb-0">No tienes cuenta? <a routerLink="/registrar-usuario">Registrar</a> </p>
+                    <a class="mb-10" routerLink="/recuperar-pass-word">recuperar contraseña</a>
+                </div>
+            </form>
+
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
     </div>
 </div>
-
-

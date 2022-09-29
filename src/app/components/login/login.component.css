@@ -60,3 +60,35 @@
 
 
 
+.ingresaButton {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 0.2em 0.8em 6.4em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #07225d, #081c78, #080829);
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+   }
+   
+   .ingresaButton svg {
+    margin-right: 3px;
+    transform: rotate(30deg);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+   }
+   
+   .ingresaButton span {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+   }
+   
+   .ingresaButton:hover svg {
+    transform: translateX(5px) rotate(90deg);
+   }
+   
+   .ingresaButton:hover span {
+    transform: translateX(7px);
+   }
